@@ -1,5 +1,5 @@
 # Site settings
-title: Andrew Hoefling's Development Blog
+title: Andrew Hoefling - Life Through Code
 email: andrew@hoeflingsoftware.com
 description: > # this means to ignore newlines until "baseurl:"
   My adventures through software development in the world of .NET.
@@ -8,8 +8,11 @@ description: > # this means to ignore newlines until "baseurl:"
   recommendations through the blog.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://ahoefling.github.io" # the base hostname & protocol for your site
+fullname: Andrew Hoefling
 twitter_username: ahoefling
 github_username:  ahoefling
+stackoverflow_name: andrew-hoefling
+linkedin_user: andrew-hoefling-38324912
 
 # Build settings
 markdown: kramdown
