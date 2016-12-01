@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How To Develop iOS Without a Mac"
-date:   2016-12-01 12:03:37
+date:   2016-12-01 08:35:00
 categories: Xamarin
 tags: [iOS, Xamarin.Forms, Xamarin, Apple Developer, bitrise.io, C#, .NET]
 ---
