@@ -1,5 +1,6 @@
 gems: 
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Site settings
 title: Andrew Hoefling - Life Through Code
