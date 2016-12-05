@@ -1,9 +1,6 @@
 gems: 
   - jekyll-seo-tag
 
-seo: 
-  name: Andrew Hoefling
-name: Anoter Name Test
 # Site settings
 title: Andrew Hoefling - Life Through Code
 author: Andrew Hoefling
