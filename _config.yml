@@ -1,6 +1,9 @@
 gems: 
   - jekyll-seo-tag
 
+seo: 
+  name: Andrew Hoefling
+
 # Site settings
 title: Andrew Hoefling - Life Through Code
 author: Andrew Hoefling
