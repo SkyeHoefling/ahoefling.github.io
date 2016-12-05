@@ -16,3 +16,6 @@ linkedin_user: andrew-hoefling-38324912
 
 # Build settings
 markdown: kramdown
+
+gems:
+    - jekyll-seo-tag
