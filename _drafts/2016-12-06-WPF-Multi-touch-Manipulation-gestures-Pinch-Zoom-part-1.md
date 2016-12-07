@@ -33,6 +33,7 @@ The `ManipulationStarted` and `ManipulationStarting` events are a great way to s
 
 Adding this method is super easy and bindable for your View Models.
 
+TODO: Just use github gist instead of syntax highlighter, it is clearly broken
 XAML:
 {% highlight xaml linenos %}
 <xml>
