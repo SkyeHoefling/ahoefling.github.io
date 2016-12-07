@@ -9,7 +9,7 @@ I am the Owner/Lead Software Engineer of Hoefling Software and a consultant at [
 
 The goal of this blog is to document new issues I overcome and talk about new technology that I work with on a daily basis. 
 
-{% highlighter c# %} 
+{% highlight c# %} 
 public class Foo 
 { 
 	public void Main() 
@@ -17,4 +17,4 @@ public class Foo
 		Console.WriteLine("Hello World"); 
 	} 
 } 
-{% endhighlighter %}
+{% endhighlight %}
