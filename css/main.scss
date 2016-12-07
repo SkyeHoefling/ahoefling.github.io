@@ -2,7 +2,6 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
-@import url(syntax.css);
 
 
 // Our variables
@@ -47,3 +46,5 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+@import url(syntax.css);

@@ -1,6 +1,10 @@
 /**
  * Syntax highlighting styles
  */
+.pre {
+  overflow-x: auto;
+}
+
 .highlight {
     background: #fff;
     @extend %vertical-rhythm;

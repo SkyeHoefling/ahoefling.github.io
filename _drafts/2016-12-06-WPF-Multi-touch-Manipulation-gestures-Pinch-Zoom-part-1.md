@@ -44,9 +44,13 @@ XAML:
 </xml>```
 
 C#:
-{% highlight c# %}
+{% highlight c# linenos %}
 public class Foo
 {
+    public void Main(string[] args)
+    {
+        Console.WriteLine("Hello World");
+    }
 }
 {% endhighlight %}
 ### On Change ###
