@@ -1,18 +1,21 @@
 ---
 layout: post
-title:  "WPF Multitouch Gestures and Pinch Zoom"
-date:   2016-12-06 08:35:00
+title:  WPF Multitouch Gestures and Pinch Zoom Part 2
+modified: 2016-12-07 08:00:00
 categories: WPF
-tags: [Multitouch, Touch, Gestures, Pinch, Zoom, C#, .NET]
+tags: [Manipulation, Multitouch, Touch, Gestures, Pinch, Zoom, C#, .NET]
 ---
+The past couple days I have spent my time getting touch gestures to work on a WPF project that I am currently working on. This was surprisingly easy and difficult at the same time. This will be part 1 of a 2 part blog series which focuses on Multi-Touch in WPF applications. Part 1 will focus on simple multi touch events and part 2 will dive into a more complicated real world example with an open source project I forked on github. [test](test.md)
+ 
 Just about everyone has some touch screen device and that changes how we communicate with our software. Users no longer want to just use a keyboard and a mouse on their desktop applications, they want to be able to touch the screen to interact with their application.
 
 ideas:
 Talk about pitfalls that caused issues
-- Manually calculating the manipulators
-- Applying a scale without a transformation
-- Applying a scale with a transformation
-
+- Capturing each multi touch point
+- why we don't need to manually calculating the manipulators
+- How to retrieve center point
+- How to apply this to a User Control
+- How this works with something a little bit more complex and how to adapt the happy path
 You have decided to take your first stab at iOS development and you do not have a physical Mac machine running OS X but you have a device running iOS. You can still develop for iOS while you wait for that mac mini to come in the mail. After going through this process and developing in it I don't recommend anyone to develop in this unless it is temporary while you wait for you mac to arrive. 
 
 ## Apple Developer Account ##
