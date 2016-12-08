@@ -3,7 +3,8 @@ gems:
   - jekyll-sitemap
 
 # Site settings
-title: Andrew Hoefling - Life Through Code
+public-title: Andrew Hoefling - Life Through Code
+title: Andrew Hoefling
 author: Andrew Hoefling
 email: andrew@hoeflingsoftware.com
 description: >
