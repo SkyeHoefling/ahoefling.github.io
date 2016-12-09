@@ -25,7 +25,16 @@ twitter_username: ahoefling
 github_username:  ahoefling
 stackoverflow_name: andrew-hoefling
 linkedin_user: andrew-hoefling-38324912
-
+twitter:
+  username: andrew_hoefling
+social:
+  name: Andrew Hoefling
+  links:
+    - https://github.com/ahoefling
+    - https://www.linkedin.com/in/andrew-hoefling-38324912
+    - https://plus.google.com/+AndrewHoefling
+    - https://twitter.com/andrew_hoefling
+    - https://www.facebook.com/windpants
 # Build settings
 markdown: kramdown
 highlighter: rouge
