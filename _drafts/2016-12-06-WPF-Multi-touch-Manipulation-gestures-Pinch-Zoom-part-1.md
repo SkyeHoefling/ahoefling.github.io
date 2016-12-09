@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  WPF Multitouch Gestures and Pinch Zoom
+title:  WPF Multitouch Gestures and Pinch Zoom Part 1
 modified: 2016-12-07 08:00:00
 categories: WPF
 tags: [Manipulation, Multitouch, Touch, Gestures, Pinch, Zoom, C#, .NET]
@@ -26,65 +26,80 @@ Each event can be used for different purposes and you don't need to use each eve
 - Clean Up or Tear Down
   - ManipulationCompleted - [MSDN](https://msdn.microsoft.com/en-us/library/system.windows.uielement.manipulationcompleted(v=vs.110).aspx)
 
-If all of this makes sense you can skip ahead, if not we are going to dive into each event and how you will use it.
+## Configure UserControl for Multi Touch (Manipulations) ##
+Now that we have a basic understanding of the main manipulations events we can build the necessary hooks in our User Control to detect and handle multi touch events. The example code below creates a simple user control and has event methods that do nothing. 
 
-### Build Up ###
-The `ManipulationStarted` and `ManipulationStarting` events are a great way to set custom flags or run any build up logic. This is more of an advanced scenario but useful. Suppose you are working on a view that needs a custom touch gesture but you don't want this gesture to affect other parts of the page. You can turn off other features on the page while we capture the gesture so you don't have any side-effects.
+In the UserControl we set the property `IsManipulationEnabled="true"` which then allows the code to properly fire the manipulation events in the UserControl partial class.
 
-Adding this method is super easy and bindable for your View Models.
-
-TODO: Just use github gist instead of syntax highlighter, it is clearly broken
 XAML:
-{% highlight xaml linenos %}
-<xml>
+{% highlight xml linenos %}
+<UserControl x:Class="Foo.Bar"
+             xmlns=”http://schemas.microsoft.com/winfx/2006/xaml/presentation”
+             xmlns:x=”http://schemas.microsoft.com/winfx/2006/xaml”
+             xmlns:mc=”http://schemas.openxmlformats.org/markup-compatibility/2006″
+             xmlns:d=”http://schemas.microsoft.com/expression/blend/2008″
+             mc:Ignorable=”d”
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <!-- Setting IsMAnipulationEnabled here tells the UserControl 
+         to execute the manipulation methods -->
+    <Rectangle IsManipulationEnabled="true" />
+</UserControl>
 </xml>
 {% endhighlight %}
 
-```<xml>
-</xml>```
-
 C#:
 {% highlight c# linenos %}
-public class Foo
+public namespace Foo
 {
-    public void Main(string[] args)
+    public class Bar
     {
-        Console.WriteLine("Hello World");
+        protected override void OnManipulationStarting(ManipulationStartingEventArgs e)
+        {
+            // Touch event is starting
+            // Execute any special initialization code here
+        }
+
+        protected override void OnManipulationStarted(ManipulationStartedEventArgs e)
+        {
+            // Touch event has started
+            // Execute any special initialization code here
+        }
+       
+        protected override void OnManipulationDelta(ManipulationDeltaEventArgs e)
+        {
+            // Delta Code or On Change
+            // - Whenever the touch points update this method is executed
+            // - Execute any onChange code here
+        }
+
+        protected override void OnManipulationCompleted(ManipulationCompletedEventArgs e)
+        {
+            // Tear Down
+            // Clean up any special events and objects that no longer need
+            // to listen since our touch gesture is completed
+        }
     }
 }
 {% endhighlight %}
-### On Change ###
-TODO
 
-### Clean Up or Tear Down ###
-TODO
+Your `UserControl` is all wired up and now you can capture touch events and perform additional actions on them. 
 
-The best way to think of all of these events is 
+## Manipulation EventArgs ##
+Each ManipulationEvent comes with it's own set of Manipulation EventArgs and for the most part they contain the same information but the data does differ for the different cases. It is important to understand what this data means before we can start programming our Gestures. We are going to go into some common use cases if you are interested in the Manipulation EventArgs documentation you can read the MSDN.
 
-Describe the workflow
+### Single or Multi Touch Points ###
+How many points are detected
 
-1. Starting
-2. Delta
-3. Completed
+### Origin or Center Point ###
+The center point of all the points
 
-## Configure User Control for Multi Touch ##
-TODO
-
-## Simple Translation Gesture ##
+## Gestures ##
 ### Single Touch Translation ###
 Even though we are using the multi touch events we can still use the single touch point or manipulation for simple touch gestures such as translation. Suppose you have a very large image and you want to pan across that image a single manipulation tranlsation is how you would move the viewport.
 
-## Multi Touch Pinch and Zoom ##
-
 ### Multi Touch Multiple Manipulations ###
 
-TODO
-
-## Multi Touch Event Properties ##
-TODO
-
-## Build Up Events and Tear Down Events ##
-TODO
 
 
 We have covered the basic of touch gestures and how you can take advantage of the multi touch events via the Manipulation Events in WPF when using .NET 4.0 or greater. [Part 2]({% post_url 2016-12-06-WPF-Multi-touch-Manipulation-gestures-Pinch-Zoom-part-2 %}) of this 2 part post goes into a use case on a project I work on and how you can apply these techniques to a customer user control. Full source code available in [GitHub](http://www.github.com/) fork.
