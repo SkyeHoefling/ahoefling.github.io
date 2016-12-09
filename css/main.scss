@@ -39,6 +39,7 @@ $on-laptop:        800px;
 }
 
 
+@import url(syntax.css);
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
@@ -46,5 +47,3 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
-
-@import url(syntax.css);
