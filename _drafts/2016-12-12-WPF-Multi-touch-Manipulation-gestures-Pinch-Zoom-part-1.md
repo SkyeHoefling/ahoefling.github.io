@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  WPF Multitouch Gestures and Pinch Zoom Part 1
-modified: 2016-12-07 08:00:00
+modified: 2016-12-12 08:00:00
 categories: WPF
 tags: [Manipulation, Multitouch, Touch, Gestures, Pinch, Zoom, C#, .NET]
 ---
