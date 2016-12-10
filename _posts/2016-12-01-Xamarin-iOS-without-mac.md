@@ -4,6 +4,7 @@ title:  "How To Develop iOS Without a Mac"
 date:   2016-12-01 08:35:00
 categories: Xamarin
 tags: [iOS, Xamarin.Forms, Xamarin, Apple Developer, bitrise.io, C#, .NET]
+share: true
 ---
 You have decided to take your first stab at iOS development and you do not have a physical Mac machine running OS X but you have a device running iOS. You can still develop for iOS while you wait for that mac mini to come in the mail. After going through this process and developing in it I don't recommend anyone to develop in this unless it is temporary while you wait for you mac to arrive. 
 

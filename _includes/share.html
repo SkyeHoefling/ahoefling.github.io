@@ -1,0 +1,31 @@
+{% if page.share %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="{{ "/css/share.css" | prepend: site.baseurl }}" />
+<script type="text/javascript" src="{{ "/scripts/share.js" | prepend: site.baseurl }}"></script>
+<div id="share-box">
+  <h3>Share This:</h3> 
+  <a class="share" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{site.baseurl}}{{ page.url }}" onclick="share(this.href); return false;" >
+    <i class="fa fa-facebook-official fa share-button"> facebook</i>
+  </a>
+       
+  <a class="share" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{site.baseurl}}{{ page.url }}" onclick="share(this.href); return false;">
+    <i class="fa fa-twitter fa share-button"> twitter</i>
+  </a>
+       
+  <a class="share" href="https://plus.google.com/share?url={{ site.url }}{{site.baseurl}}{{ page.url }}" onclick="share(this.href); return false;" >
+    <i class="fa fa-google-plus fa share-button"> google</i>
+  </a>
+       
+  <a class="share" href="http://www.reddit.com/submit?url={{ site.url }}{{site.baseurl}}{{ page.url }}" onclick="share(this.href); return false;" >
+    <i class="fa fa-reddit fa share-button"> reddit</i>
+  </a>
+        
+  <a class="share" href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{site.baseurl}}{{ page.url }}&title={{ page.title }}&summary={{ page.description }}&source=webjeda" onclick="share(this.href); return false;" >
+    <i class="fa fa-linkedin fa share-button"> linkedin</i>
+  </a>
+                                 
+  <a class="share" href="mailto:?subject={{ page.title }}&amp;body=Check out this site {{ site.url }}{{site.baseurl}}{{ page.url }}">
+    <i class="fa fa-envelope fa share-button"> email</i>
+  </a>                                        
+</div>
+{% endif %}

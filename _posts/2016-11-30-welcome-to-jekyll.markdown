@@ -3,6 +3,7 @@ layout: post
 title:  "Development Blog Launched"
 date:   2016-11-30 12:03:37
 categories: blog
+share: true
 ---
 I am Andrew Hoefling and I am a Software Engineer. This is my introduction blog post about my development blog. I am a C#/.NET expert or at least I play one on TV and I want to share my knowledge with co-workers and anyone that stumbles upon my little corner of the web. 
 
