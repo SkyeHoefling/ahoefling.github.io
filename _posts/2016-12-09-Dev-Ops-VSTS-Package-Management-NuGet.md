@@ -5,6 +5,7 @@ modified: 2016-12-09 16:15:00
 categories: DevOps
 tags: [VSTS, Package Management, NuGet, Dependency Managament, Publish, Deploy, Automation, Build, Visual Studio]
 share: true
+comments: ture
 ---
 Managing project dependencies can be complicated, from handling shared libraries, 3rd party libraries, homebrew libaries and forks of open source libraries. There is a need for just about every project regardless of size to manage these libraries with a Package Manager. Fortunately most 3rd Party Libraries are on NuGet or some other public Package Management feed so we don't have to manage them. Getting your private packages on your own private NuGet server is now easier then ever and with the tools built into VSTS you can create automated builds that deploy changes to your libraries to that package management server.
 
