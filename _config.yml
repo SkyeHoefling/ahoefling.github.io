@@ -21,12 +21,10 @@ description-visible: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.andrewhoefling.com" # the base hostname & protocol for your site
 fullname: Andrew Hoefling
-twitter_username: ahoefling
+twitter: andrew_hoefling
 github_username:  ahoefling
 stackoverflow_name: andrew-hoefling
 linkedin_user: andrew-hoefling-38324912
-twitter:
-  username: andrew_hoefling
 social:
   name: Andrew Hoefling
   links:
