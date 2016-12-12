@@ -7,11 +7,25 @@
   -moz-border-radius: 10px;
   line-height: 2em;
   text-decoration: none;
+  margin: 5px 0 5px 0;
 }
 
 .tag:hover {
   background-color: white;
   color: #78B7FF; 
+  text-decoration: none;
 }
 
+.tag:visited {
+  color: white;
+}
 
+.tag:visited:hover {
+  background-color: white;
+  color: #78B7FF;
+  text-decoration:none
+}
+
+.tag:active {
+  color: #78B7FF;
+}
