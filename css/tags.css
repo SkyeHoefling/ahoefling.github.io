@@ -1,0 +1,31 @@
+.tag {
+  background-color: #78b7ff;
+  border: 1px solid gray;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  line-height: 2em;
+  text-decoration: none;
+  margin: 5px 0 5px 0;
+}
+
+.tag:hover {
+  background-color: white;
+  color: #78B7FF; 
+  text-decoration: none;
+}
+
+.tag:visited {
+  color: white;
+}
+
+.tag:visited:hover {
+  background-color: white;
+  color: #78B7FF;
+  text-decoration:none
+}
+
+.tag:active {
+  color: #78B7FF;
+}

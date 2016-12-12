@@ -2,7 +2,7 @@
 layout: post
 title:  "Development Blog Launched"
 date:   2016-11-30 12:03:37
-categories: blog
+categories: Blog
 share: true
 comments: true
 ---
