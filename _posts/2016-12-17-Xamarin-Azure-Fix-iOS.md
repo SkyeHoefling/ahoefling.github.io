@@ -30,7 +30,7 @@ public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsAppli
 
         return base.FinishedLaunching(app, options);
     }
-}i
+}
 {% endhighlight %}
 
 Your Xamarin app should now be working with your Azure App Services.
