@@ -1,269 +1,123 @@
 ---
 layout: post
-title:  Entity Framework Mocking DbSet for Sync and Async Queries in Moq
-modified: 2017-07-03 08:00:00
+title:  How to Setup Swagger in Web API ASP.NET with Swashbuckle
+modified: 2017-10-01 08:00:00
 categories: dotnet
-tags: [dotnet, Entity Framework, Testing, Moq, Async]
+tags: [dotnet, asp.net, swagger, documentation]
 share: true
 comments: true
 ---
-When building a test framework it is sometimes useful to be able to write test code against `DbSet<T>` objects. Since `DbSet<T>` implements `IDbSet<T>` it is relatively easy to wire up a mock for your entity. Before we jump in let's go over an important concept in the Moq framework.
+When I first tried using Swagger with Web API I spent a little time looking through the configuration files and it seemed a little confusing to me. I did a little research and I came across Swashbuckle which makes adding Swagger UI into your asp.net Web API project a no brainer. It can hook right into your Startup Configuration class and should only take a few minutes to get the basics up and running. After learning how easy it is to setup Swagger UI in my Web API project I now spend the 5 minutes to add it in.
 
-## Add Interface to Mock Object ##
-To properly mock the `DbSet<T>` we will need to use the `As` function which adds an interface implementation to our mock. This funciton is critical when mocking out complex objects such as the `DbSet<T>`. The syntax is more or less the same as any mock but you are just attaching the interface implementation.
+Today we are going to go over the basic features to get going with Swashbuckle:
 
-{% highlight c# linenos %}
-// Suppose we have the interface IFoo and IBar where the method FooBar
-// exists on IBar -> IBar.FooBar(). We can implement the IBar interface
-// on the IFoo mock with the following code.
-var mock = new Mock<IFoo>();
-mock.As<IBar>().Setup(x => x.FooBar()).Returns("FooBar");
+* Install Swashbuckle
+* Overview of configuration code
+* How to use API Keys
+
+## Install Swashbuckle ##
+Swashbuckle is an open source repository built for both asp.net and asp.net core
+
+GitHub Repos: 
+
+* Swashbuckle - [https://github.com/domaindrivendev/Swashbuckle](https://github.com/domaindrivendev/Swashbuckle)
+* Swashbuckle.AspNetCore - [https://github.com/domaindrivendev/Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
+
+NuGet Repos:
+
+* Swashbuckle - [https://www.nuget.org/packages/Swashbuckle](https://www.nuget.org/packages/Swashbuckle)
+* Swashbuckle.AspNetCore - [https://www.nuget.org/packages/Swashbuckle.AspNetCore](https://www.nuget.org/packages/Swashbuckle.AspNetCore)
+
+Don't worry about downloading the github repo above, it is here just for your reference so you can take a look at the code or documentation if needed. One thing I really like about this library is how much control you have.
+
+To get started simple add your NuGet Dependency like you normally would. Since are working with asp.net Web API we are going to use the .NET Framework version. 
+
+In the Package Manager console enter the following command
+{% highlight powershell linenos %}
+Package-Install Swashbuckle
 {% endhighlight %}
 
-## Mock IQueryable of the DbSet (Sync) ##
-After understanding how the simple mock works lets look at how we can handle the synchronous mocking of the `DbSet<T>` object. There are 4 parts to mocking the `IQueryable<T>`
+## Configuration Code ##
 
-1. Provider
-2. Expression
-3. ElementType
-4. GetEnumerator()
+You should now have a `SwaggerConfig.cs` file located in you `App_Start` folder. Since we are using Owin Configuration there is now a simple command that needs to be called `SwaggerConfig.Register(config);`. This will call the necessary configuration code that should be created for you.
 
-This code will get you off and running with mocking out a synchronous `IDbSet<Foo>`
-{% highlight c# linenos %}
-var data = new [] 
+{% highlight C# linenos %}
+public class Startup
 {
-    new Foo(),
-    new Foo(),
-    new Foo()
-}.AsQueryable();
-
-var mock = new Mock<IDbSet<Foo>>();
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.Provider)
-    .Returns(data.Provider);
-
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.Expression)
-    .Returns(data.Expression);
-
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.ElementType)
-    .Returns(data.ElementType);
-    
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.GetEnumerator())
-    .Returns(data.GetEnumerator());
-{% endhighlight %}
-
-## Mock IQueryable of DbSet (Async) ##
-Mocking the synchronous calls to the DbSet may be enough for your needs and if it is you are done. A lot of code is using async queries. This requires a little bit more work. Fortunately Microsoft has provided some great documentation on building Test Providers, Enumerators and Enumerables. [https://msdn.microsoft.com/en-us/library/dn314429(v=vs.113).aspx](https://msdn.microsoft.com/en-us/library/dn314429(v=vs.113).aspx)
-
-1. Create your Test Providers, Enumerators and Enumerables
-2. Mock everything you did for synchronous mocking
-3. Add (`As`) interface implementation to your mock of `IDbAsyncEnumerable<T>`
-4. Swap out your provider for the `TestDbAsyncQueryProvider<T>`
-
-{% highlight c# linenos %}
-var data = new [] 
-{
-    new Foo(),
-    new Foo(),
-    new Foo()
-}.AsQueryable();
-
-var mock = new Mock<IDbSet<Foo>>();
-
-// This line is new
-mock.As<IDbAsyncEnumerable<Foo>>()
-    .Setup(x => x.GetAsyncEnumerator())
-    .Returns(new TestDbAsyncEnumerator<Foo>(data.GetEnumerator()));
-
-// this line is updated
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.Provider)
-    .Returns(new Test DbAsyncQueryProvider<Foo>(data.Provider));
-
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.Expression)
-    .Returns(data.Expression);
-
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.ElementType)
-    .Returns(data.ElementType);
-
-mock.As<IQueryable<Foo>>()
-    .Setup(x => x.GetEnumerator())
-    .Returns(data.GetEnumerator());
-{% endhighlight %}
-
-## Microsoft Test Classes ##
-{% highlight c# linenos %}
-internal class TestDbAsyncQueryProvider<TEntity> : IDbAsyncQueryProvider
-{
-    private readonly IQueryProvider _inner;
-
-    internal TestDbAsyncQueryProvider(IQueryProvider inner)
+    public void Configuration(IAppBuilder application)
     {
-        _inner = inner;
-    }
+        var config = new HttpConfiguration();
+        config.MapHttpAttributeRoutes();
+        config.Routes.MapHttpRoute(
+            name: "DefaultApi",
+            routeTemplate: "v1/{controller}/{id}",
+            defaults: new { id = RouteParameter.Optional });
 
-    public IQueryable CreateQuery(Expression expression)
-    {
-        return new TestDbAsyncEnumerable<TEntity>(expression);
-    }
+        // This is the call to our swashbuckle config that needs to be called
+        SwaggerConfig.Register(config);
 
-    public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
-    {
-        return new TestDbAsyncEnumerable<TElement>(expression);
-    }
-
-    public object Execute(Expression expression)
-    {
-        return _inner.Execute(expression);
-    }
-
-    public TResult Execute<TResult>(Expression expression)
-    {
-        return _inner.Execute<TResult>(expression);
-    }
-
-    public Task<object> ExecuteAsync(Expression expression, CancellationToken cancellationToken)
-    {
-        return Task.FromResult(Execute(expression));
-    }
-
-    public Task<TResult> ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken)
-    {
-        return Task.FromResult(Execute<TResult>(expression));
-    }
-}
-
-internal class TestDbAsyncEnumerable<T> : EnumerableQuery<T>, IDbAsyncEnumerable<T>, IQueryable<T>
-{
-    public TestDbAsyncEnumerable(IEnumerable<T> enumerable)
-        : base(enumerable)
-    { }
-
-    public TestDbAsyncEnumerable(Expression expression)
-        : base(expression)
-    { }
-
-    public IDbAsyncEnumerator<T> GetAsyncEnumerator()
-    {
-        return new TestDbAsyncEnumerator<T>(this.AsEnumerable().GetEnumerator());
-    }
-
-    IDbAsyncEnumerator IDbAsyncEnumerable.GetAsyncEnumerator()
-    {
-        return GetAsyncEnumerator();
-    }
-
-    IQueryProvider IQueryable.Provider
-    {
-        get { return new TestDbAsyncQueryProvider<T>(this); }
-    }
-}
-
-internal class TestDbAsyncEnumerator<T> : IDbAsyncEnumerator<T>
-{
-    private readonly IEnumerator<T> _inner;
-
-    public TestDbAsyncEnumerator(IEnumerator<T> inner)
-    {
-        _inner = inner;
-    }
-
-    public void Dispose()
-    {
-        _inner.Dispose();
-    }
-
-    public Task<bool> MoveNextAsync(CancellationToken cancellationToken)
-    {
-        return Task.FromResult(_inner.MoveNext());
-    }
-
-    public T Current
-    {
-        get { return _inner.Current; }
-    }
-
-    object IDbAsyncEnumerator.Current
-    {
-        get { return Current; }
+        // invoke the web API
+        application.UseWebApi(config);
     }
 }
 {% endhighlight %}
 
-## Putting It All Together ##
-In my testing framework this is best put into an extension method so I can easily create this mock on the fly with as little code as possible. Here are some code snippets of how I would setup the extension method and how I would use it in a test.
+### Swagger Config ###
+The nice thing when you install the library is it puts a lot of the documentation in the code scaffolding so you don't need to go hunting for it. Has most of the optional features commented out with docs right in the comments above each one and how it should be used. 
 
-Extension Method:
-{% highlight c# linenos %}
-public static class QueryableExtensions
+You can choose to keep this verbose configuration file or shrink it down. I prefer to keep the verbose comments in because I find it useful for me or other devs on the team when we need to trun new features on for the swagger config. Our code snippet below is trimmed down for our purposes here, but the code sample attached is not.
+
+{% highlight C# linenos %}
+public class SwaggerConfig
 {
-    public static IDbSet<T> BuildMockDbSet<T>(this IQueryable<T> source)
-        where T : class
+    public static void Register(HttpConfiguration config)
     {
-        var mock = new Mock<IDbSet<T>>();
-        mock.As<IDbAsyncEnumerable<T>>()
-            .Setup(x => x.GetAsyncEnumerator())
-            .Returns(new TestDbAsyncEnumerator<T>(source.GetEnumerator()));
-
-        mock.As<IQueryable<T>>()
-            .Setup(x => x.Provider)
-            .Returns(new TestDbAsyncQueryProvider<T>(source.Provider));
-
-        mock.As<IQueryable<T>>()
-            .Setup(x => x.Expression)
-            .Returns(source.Expression);
-
-        mock.As<IQueryable<T>>()
-            .Setup(x => x.ElementType)
-            .Returns(source.ElementType);
-
-        mock.As<IQueryable<T>>()
-            .Setup(x => x.GetEnumerator())
-            .Returns(source.GetEnumerator());
-
-        return mock.Object;
+        config
+            .EnableSwagger()
+            .EnableSwaggerUi();
     }
 }
 {% endhighlight %}
 
-Test Code:
-{% highlight c# linenos %}
-[TestFixture]
-public class FooBarTests
+Both `EnableSwagger` and `EnableSwaggerUi` take configuration options which is where you will see all the documentation provided. To get the barebones install running you just need to call the 2 commands above.
+
+### API Keys ###
+A common configuration with swagger is enabling API Keys to handle authorization to the API. When you are using a tool such as Postman you may include an API Key in the header. We have this same control with Swagger. There is a input control at the top of the page asking for an API Key. The user just plugs in their key and hits the `Explore` button. Now when they try to use any of the APIs the API Key is sent in the header and the page is once again usable.
+
+How do you configure this? Going back to our configuration file `SwaggerConfig.cs` you need to specify the API Key in both methods `EnableSwagger` and `EnableSwaggerUi`
+
+{% highlight C# linenos %}
+public class SwaggerConfig
 {
-    [Test]
-    public void DbSetTest()
+    public static void Register(HttpConfiguration config)
     {
-        var data = new []
-        {
-            new Foo(),
-            new Foo(),
-            new Foo()
-        }
-        .AsQueryable()
-        .BuildMockDbSet();
-
-        // FooBarService takes in the `IDbSet<Foo>` 
-        // All we have to do is pass the mocked object in
-        // and we are able to write our test code with very
-        // little build up
-        var service = new FooBarService(data.Object);
-
-        // test code would go here
-    }
-}
-
-public class FooBarService
-{
-    public FooBarService(IDbSet<Foo> data)
-    {
-        // there would be real logic here that does
-        // something with the constructor parameters
+        config
+            .EnableSwagger(c =>
+            {
+                c.ApiKey("apiKey")
+                    .Description("API Key for accessing secure APIs")
+                    .Name("Api-Key")
+                    .In("header");
+            })
+            .EnableSwaggerUi(c =>
+            {
+                c.EnableApiKeySupport("Api-Key", "header");
+            });
     }
 }
 {% endhighlight %}
+
+The most important parameters are the `Name()` and `In()` where the API Key name is specified in Name and `In()` determines where to place the API Key. In our example here we want this place in the header and we want it to be called "API-Key".
+
+After we specify the ApiKey in the first configuration section we need to tell SwaggerUi to enable the API Key which we again specify the Name and In parameters again.
+
+At this point if you reload your swagger UI you will be able to specify your API Key and call your Web API through the Web Utility
+
+## Access Swagger UI from Browser ##
+We have gone over the basics of setting up swagger UI but did not go over how to access our new API that is apart of our page.
+
+* http://localhost/swagger/ui
+
+## Code Sample ##
+
+TODO Add GitHub repository
