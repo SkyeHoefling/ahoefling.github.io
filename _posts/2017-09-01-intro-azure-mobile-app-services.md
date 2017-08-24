@@ -7,7 +7,7 @@ tags: [Xamarin, Azure, App Serivce, OData]
 share: true
 comments: true
 ---
-The single biggest problem I have seen while developing any type of mobile app is how do we handle offline sync? On mosst projects I have worked on this has been punted as a problem that isn't worth the devs time until we are close to release. While this is a bad idea the team does not need to freak out about handling offline sync. It is easier than we make it for ourselves. Today's take away is "Don't freak out, mobile sync is easy"
+The single biggest problem I have seen while developing any type of mobile app is how do we handle offline sync? On most projects I have worked on this has been punted as a problem that isn't worth the devs time until we are close to release. While this is a bad idea in my opinion, the team does not need to freak out about handling offline sync. It is easier than we make it for ourselves, today's take away is "Don't freak out, mobile sync is easy"
 
 Most mobile apps require some backend API or Service Layer that needs to be used to retrieve data. This is true for a wide range of apps from enterprise apps to games and touches upon almost everything in between. This service layer is critical for getting information to the users. Some examples may be.
 
@@ -47,7 +47,7 @@ The most common thing I hear about using any of the tools Microsoft Azure puts o
 * Locally Hosted Azure
 * IIS (yes, you can host this in house)
 
-To host this in house you will deploy your OData service layer to your server just like you would do for anything else. For the purpose of this post we are going to talk about Azure since it makes our lives super easy.
+To host this in house you will deploy your OData service layer to your server just like you would do for anything else. Yes, Azure Mobile App Services is just an extension of OData, so if you can deploy your OData internally you can deploy this. For the purpose of this post we are going to talk about Azure since it makes our lives super easy.
 
 ## Configure Azure and Get Template ##
 Configuring Azure and getting up and running is super easy if you follow the steps below. My favorite part about going through and configuring Azure for Mobile App Services is they provide code templates for almost every mobile platform and technology you will be working in from iOS Native (objective-c/swift) to Xamarin.Forms.
