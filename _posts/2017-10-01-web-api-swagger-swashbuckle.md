@@ -63,7 +63,7 @@ public class Startup
 {% endhighlight %}
 
 ### Swagger Config ###
-The nice thing when you install the library is it puts a lot of the documentation in the code scaffolding so you don't need to go hunting for it. Has most of the optional features commented out with docs right in the comments above each one and how it should be used. 
+The nice thing when you install the library is it puts a lot of the documentation in the code scaffolding so you don't need to go hunting for it. By default the code scaffolding has most of the optional features commented out with docs right in the comments above each one and how it should be used. 
 
 You can choose to keep this verbose configuration file or shrink it down. I prefer to keep the verbose comments in because I find it useful for me or other devs on the team when we need to trun new features on for the swagger config. Our code snippet below is trimmed down for our purposes here, but the code sample attached is not.
 
