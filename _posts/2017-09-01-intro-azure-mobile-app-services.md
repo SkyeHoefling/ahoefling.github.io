@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Intro to Azure Mobile App Services
-modified: 2017-04-18 08:00:00
+modified: 2017-09-01 08:00:00
 categories: Xamarin
 tags: [Xamarin, Azure, App Serivce, OData]
 share: true
