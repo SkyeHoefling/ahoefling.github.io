@@ -27,7 +27,7 @@ You will need to have a working Release Build and Environment configured before 
 ## 1. Find Our Element to Transform ##
 The first thing that needs to be done is figure out what needs to be transformed and what the new value if. In our example here we will be transforming the connection string in our `web.config` for a asp.net website.
 
-{% highlight xml linenose %}
+{% highlight xml linenos %}
 <configuration>
   <connectionStrings>
     <add name="DbConnection" connectionString="Data Source=localhost;Initial Catalog=dev;Integrated Security=true;" providerName="System.Data.SqlClient"/>>
