@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  How to Setup Swagger in Web API ASP.NET with Swashbuckle
-modified: 2017-10-01 08:00:00
+modified: 2017-11-01 08:00:00
 categories: dotnet
 tags: [dotnet, asp.net, swagger, documentation]
 share: true
