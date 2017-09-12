@@ -100,8 +100,65 @@ The `vss-extension.json` tell the `tfx` how to build your extension. This file c
 {% endhighlight %}
 
 ### icon.png ###
+The icon image file that will be used to identify your build task in the marketplace and wherever it is used inside of VSTS
 
 ### task.json ###
+The Task metadata file which is located in your build task describes the individual task and what it executes. This includes parameters the user needs to enter and which scripts to execute.
+
+Here is a simple `task.json` file that executes a powershell script
+
+{% highlight json linenos %}
+{
+    "id": "5164728d-cfca-4576-a066-bde89930bf2b",
+    "name": "HelloWorld",
+    "friendlyName": "Hello World",
+    "description": "Prints Hello World to the console",
+    "helpMarkDown": "",
+    "category": "Build",
+    "visibility": [
+        "Build"
+    ],
+    "runsOn": [
+        "Agent",
+        "DeploymentGroup"
+    ],
+    "author": "Andrew Hoefling",
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 16
+    },
+    "instanceNameFormat": "Prints Hello World",
+    "groups": [
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": false
+        }
+    ],
+    "inputs": [
+        {
+            "name": "name",
+            "type": "string",
+            "label": "Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Enter your name to print to the console"
+        }
+    ],
+    "execution": {
+        "PowerShell3": {
+            "target": "powershell.ps1",
+            "platforms": [
+                "windows"
+            ],
+            "workingDirectory": "$(currentDirectory)"
+        }
+    }
+}
+{% endhighlight %}
+
+TODO - we need to add information about each section and a screenshot what this will look like as a build task.
 
 ### Buildtasks Powershell Script ###
 
