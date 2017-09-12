@@ -23,3 +23,86 @@ After going through this article you should be able to do the following:
 * Publish your new VSTS Build Task to the marketplace and share it with VSTS instances
   * Anyone can publish to the marketplace but to have public Tasks you need to be a verified VSTS Publisher
 * Understanding of the VSTS Extension Ecosystem
+
+## Download the CLI ##
+To get started you will need to download the CLI using node.js, if you don't have version 4.0 or greater head over to [https://nodejs.org/](https://nodejs.org/) and download the latest version.
+
+Execute the following command from your favorite shell/command prompt
+`npm install -g tfx-cli` 
+
+You should now have the CLI successfully installed and you are ready to start developing your new VSTS Build Task.
+
+## Build Scaffolding ##
+There is no quick scaffolding command that I found in the Visual Studio docs but there is some in-depth tutorials that you will find useful. (see useful links at the bottom).
+
+In your root directory create the following structure and files
+
+{% highlight text linenos %}
+|- README.md
+|- vss-extension.json
+|- icon.png
+|- buildtasks
+    |- task.json
+    |- powershell.ps1
+{% endhighlight %}
+
+### README.md ###
+This is really just for you, it is a `README.md` file. You should document what your VSTS Build Task is going to do and it would be cool if you hosted it on GitHub to contribute to the community. Unless you need to keep it in house. Either way document what your task does, it is important.
+
+### vss-extension.json ###
+The `vss-extension.json` tell the `tfx` how to build your extension. This file contains all of your metadata and configuration. Some important sections that we have to fill out:
+
+* `id` - This is the camalCaseName of the task
+* `version` - The current version of the task
+* `name` - The friendly name of the task
+* `description` - The description of the task, which will be displayed on the marketplace
+* `publisher` - your publisher ID
+  * Go to the Visual Studio Market Place publisher to create your publisher profile [https://marketplace.visualstudio.com/manage/publishers](https://marketplace.visualstudio.com/manage/publishers)
+* `targets` - What type of extension are you building? In our case it should always be `Microsoft.VisualStudio.Services` for VSTS Build Task
+* `icons` - The icon image you want to represent the build task
+* `contribution` - contains meta information about the task
+* `files` - All the files that compose the build task
+
+{% highlight json linenos %}
+{
+	"manifestVersion": 1,
+	"id": "HelloBuildTask",
+	"version": "1.0.0",
+	"name": "Hello World",
+	"description": "A VSTS Build Task that prints Hello World to the Console",
+	"publisher": "hoefling-software",
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+			}
+		],
+	"icons": {
+		"default": "icon.png"
+	 },
+	"contributions": [
+		{
+			"id": "HelloBuildTask",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "buildtask"
+			}
+		}
+	],
+	"files":[
+		{
+			"path": "buildtask"			
+		}
+	]
+}
+{% endhighlight %}
+
+### icon.png ###
+
+### task.json ###
+
+### Buildtasks Powershell Script ###
+
+
