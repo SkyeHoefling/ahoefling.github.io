@@ -297,3 +297,12 @@ When you complete the task your output should contain your build task:
 You have now successfully created your first VSTS Build Task and got it working in your VSTS instance.
 
 ## Verified Publishers and the Public Marketplace ##
+If you want to add your new Build Task to the public marketplace you will need to send an email to microsoft and request permission. They have their own set of rules of who can and can not become a verified publisher.
+
+More information on this topic can be found at the marketplace publisher portal.
+
+## Useful Links ##
+
+* [Microsoft Documentation](https://www.visualstudio.com/en-us/docs/integrate/extensions/develop/add-build-task)
+* [GitHub Repo of Microsoft Tasks](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks)
+* [Code Sample](https://github.com/ahoefling/build-task-demo)
