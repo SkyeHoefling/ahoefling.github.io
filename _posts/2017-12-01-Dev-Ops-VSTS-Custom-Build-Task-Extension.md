@@ -178,7 +178,67 @@ Here is a simple `task.json` file that executes a powershell script
 | execution    | The scripts the build task will execute             |
 
 ### Buildtasks Powershell Script ###
-If you examine the end of the `task.json`
+If you examine the end of the `task.json` you will notice at the bottom of the file there is an `execution` property. This property defines what scripts will execute.
 
+`task.json` snippet
+{% highlight json linenos %}
+"execution": {
+    "PowerShell3": {
+        "target": "powershell.ps1",
+        "platforms": [
+            "windows"
+        ],
+        "workingDirectory": "$(currentDirectory)"
+    }
+}
+{% endhighlight %}
 
+This part of the metadata file tells the build task to execute the `powershell.ps1` script in the working directory of build agents current execution.
+
+## Powershell Script and Modules ##
+Let's try creating our Hello World script, all we care about right now is printing "Hello World" to the console. See the powershell script below.
+
+{% highlight ps1 linenos %}
+[CmdletBinding()]
+param()
+
+Write-Host "Hello World"
+{% endhighlight %}
+
+If we take everything we have done and deployed it out to our build enviornment we will get "Hello World" printing to the console. If you would like to attemp this skip ahead to the Publishing and Deployment section below, but be sure to come back after you test it.
+
+...
+
+Now that you have tried a publish and deployment you can't really do anything with this unless you can get the parameters from the metadata file `task.json`. That is where the `VstsTaskSdk` Powershell Module comes in. It is a useful module that allows us easy access to the task inputs. When we load the module in you may run into a few issues that we are going to walk through.
+
+Install VstsTaskSdk Powershell Module
+1. open up powershell
+2. navigate to the `root/buildtask` of directory of your extension
+3. execute `mkdir ps_modules` and then navigate into the new directory
+4. your `pwd` should read `root/buildtask/ps_modules`
+5. execute `Save-Module -Name VstsTaskSdk -Path .` which will save the module to disk.
+6. Flatten the directory structure by removing the version number. For example you will have a path of `root/buildtask/ps_modules/VstsTaskSdk/0.10.0/*` which should now read `root/buildtask/ps_modules/VstsTaskSdk/*`
+
+When you are installing Powershell Modules if you don't remove the version folder and flatten it you will run into issues on the build machine when it tries to find the reference. 
+
+Now we have access to the APIs to retrieve information from the `task.json` and we can make a more powerful powershell script.
+
+{% highlight ps1 linenos %}
+[CmdletBinding()]
+param()
+
+Trace-VstsEnteringInvocation $MyInvocation
+try {
+    # Get inputs.
+    $inputName = Get-VstsInput -Name 'name' -Require
+
+    Write-Host "Hello $inputName"
+} finally {
+    Trace-VstsLeavingInvocation $MyInvocation
+}
+{% endhighlight %}
+
+This script retrieves the `name` property we defined as an input and it will print out "Hello Andrew" to the console if you enter the name "Andrew" for the name.
+
+## Publishing and Deployment ##
 
