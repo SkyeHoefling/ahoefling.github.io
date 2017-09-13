@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Creating a Custom Build Task in VSTS (Visual Studio Team Services)
-modified: 2017-12-01 08:00:00
+modified: 2017-10-02 08:00:00
 categories: DevOps
 tags: [VSTS, Extension, Powershell, Build]
 share: true
@@ -10,7 +10,7 @@ comments: false
 Automating builds with VSTS saves the teams countless hours of debugging when someone gives the code the "works on my machine" seal of approval. The tests may not run, there will be stale code between developers and it just causes problems. 
 
 
-![works on my machine seal]({{ site.url }}/assets/posts/2017-12/works-on-my-machine-seal.png)
+![works on my machine seal]({{ site.url }}/assets/posts/2017-10/works-on-my-machine-seal.png)
 
 The VSTS ecosystem provides a wide set of tools that you should be using. If you aren't head over to [Visual Studio Team Services](https://www.visualstudio.com/vso/) and take a look. 
 
@@ -111,7 +111,7 @@ The Task metadata file which is located in your build task describes the individ
 
 The `task.json` configures what the user is going to see when they select your build task in the UI. Here is an example of what a rendered Hello World build task will look like
 
-![Hello World Build Task UI]({{ site.url /assets/posts/2017-12/Build-Task-UI-Settings.png }})
+![Hello World Build Task UI]({{ site.url /assets/posts/2017-10/Build-Task-UI-Settings.png }})
 
 Here is a simple `task.json` file that executes a powershell script
 
@@ -277,7 +277,7 @@ At this point we can share our extension with anyone that wants it. When you hov
 
 Once your extension is shared you can log into that VSTS instance and add the extension via extension page. You will need to be at the root level of VSTS to access extensions for the account. Once you get to the extensions screen you will see a screen like this:
 
-![works on my machine seal]({{ site.url }}/assets/posts/2017-12/extension-page.png)
+![works on my machine seal]({{ site.url }}/assets/posts/2017-10/extension-page.png)
 
 Select the shared extension and install it. Your extension is successfully installed
 
@@ -292,7 +292,7 @@ If you have gotten this far you have now created, published and deployed your cu
 6. save and queue the new build
 
 When you complete the task your output should contain your build task:
-![console log]({{ site.url }}/assets/posts/2017-12/build-task-console.png)
+![console log]({{ site.url }}/assets/posts/2017-10/build-task-console.png)
 
 You have now successfully created your first VSTS Build Task and got it working in your VSTS instance.
 
