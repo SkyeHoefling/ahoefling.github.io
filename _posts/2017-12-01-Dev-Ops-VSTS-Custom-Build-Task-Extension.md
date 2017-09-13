@@ -305,4 +305,4 @@ More information on this topic can be found at the marketplace publisher portal.
 
 * [Microsoft Documentation](https://www.visualstudio.com/en-us/docs/integrate/extensions/develop/add-build-task)
 * [GitHub Repo of Microsoft Tasks](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks)
-* [Code Sample](https://github.com/ahoefling/build-task-demo)
+* [Code Sample](https://github.com/ahoefling/VSTS-Build-Task-Sample)
