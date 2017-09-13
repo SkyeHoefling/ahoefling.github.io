@@ -52,17 +52,21 @@ This is really just for you, it is a `README.md` file. You should document what 
 ### vss-extension.json ###
 The `vss-extension.json` tell the `tfx` how to build your extension. This file contains all of your metadata and configuration. Some important sections that we have to fill out:
 
-* `id` - This is the camalCaseName of the task
-* `version` - The current version of the task
-* `name` - The friendly name of the task
-* `description` - The description of the task, which will be displayed on the marketplace
-* `publisher` - your publisher ID
-  * Go to the Visual Studio Market Place publisher to create your publisher profile [https://marketplace.visualstudio.com/manage/publishers](https://marketplace.visualstudio.com/manage/publishers)
-* `targets` - What type of extension are you building? In our case it should always be `Microsoft.VisualStudio.Services` for VSTS Build Task
-* `icons` - The icon image you want to represent the build task
-* `contribution` - contains meta information about the task
-* `files` - All the files that compose the build task
+| Property    | Description                           |
+|-------------|---------------------------------------|
+| id          | This is the camalCaseName of the task |
+| version     | The current version of the task       |
+| name        | The friendly name of the task         |
+| description | The description of the task           |
+| publisher   | your publisher ID
+|             | Go to the Visual Studio Market Place publisher to create your publisher profile [https://marketplace.visualstudio.com/manage/publishers](https://marketplace.visualstudio.com/manage/publishers)|
+| targets     | What type of extension are you building? In our case it should always be `Microsoft.VisualStudio.Services` for VSTS Build Task |
+| icons       | The icon image you want to represent the build task    |
+| contribution| contains meta information about the task               |
+| files       | All the files that compose the build task              |
 
+
+<br />
 {% highlight json linenos %}
 {
 	"manifestVersion": 1,
@@ -162,16 +166,16 @@ Here is a simple `task.json` file that executes a powershell script
 }
 {% endhighlight %}
 
-| Property       | Description                                         |
-|----------------|-----------------------------------------------------|
-| `id`           | A GUID to uniquely identify the build task          |
-| `name`         | The name of the build task                          |
-| `friendlyName` | The friendly name of the build task                 |
-| `description`  | The description of the build task                   |
-| `author`       | The author of the build task                        |
-| `version`      | The version to display in format (x.x.x)            |
-| `inputs`       | The inputs the user will be able to enter data      |
-| `execution`    | The scripts the build task will execute             |
+| Property     | Description                                         |
+|--------------|-----------------------------------------------------|
+| id           | A GUID to uniquely identify the build task          |
+| name         | The name of the build task                          |
+| friendlyName | The friendly name of the build task                 |
+| description  | The description of the build task                   |
+| author       | The author of the build task                        |
+| version      | The version to display in format (x.x.x)            |
+| inputs       | The inputs the user will be able to enter data      |
+| execution    | The scripts the build task will execute             |
 
 ### Buildtasks Powershell Script ###
 If you examine the end of the `task.json`
