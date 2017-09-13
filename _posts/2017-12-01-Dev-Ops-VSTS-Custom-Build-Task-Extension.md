@@ -241,4 +241,59 @@ try {
 This script retrieves the `name` property we defined as an input and it will print out "Hello Andrew" to the console if you enter the name "Andrew" for the name.
 
 ## Publishing and Deployment ##
+The code is completed and it is now time to publish our extension to the marketplace and deploy it into our next VSTS Build. This is where everything starts coming together and is how you can test your task.
 
+The first thing you have to do is create your publishing profile so you can upload your Visual Studio Extension `.vsix` into the marketplace and add it to your VSTS instance. Open a browser and navigate to the marketplace to create your publishing profile
+
+[https://marketplace.visualstudio.com/manage/publishers](https://marketplace.visualstudio.com/manage/publishers)
+
+Once you have created a publishing profile you will need to edit the `vss-extension.json` file to use the publisher ID you just created. My publisher id is `hoefling-software` so we are going to use that.
+
+Before generating the extenstion file I make sure my version numbers are in sync with my `task.json` file and `vss-extension.json`. Once you confirm this you can proceed with generating your extension file.
+
+Navigate to the root directory and execute the following command with `tfx-cli`
+{% highlight text linenos %}
+tfx extension create --manifest-globs vss-extension.json
+{% endhighlight %}
+
+This will create a `.vsix` file which is a Visual Studio Extension file. The name will be something like `hoefling-software.HelloBuildTask-1.0.0.vsix` where the name conforms to the standard defined below
+
+| Name              | Property  |
+|-------------------|-----------|
+| hoefling-software | Publisher |
+| HelloBuildTask    | id        |
+| 1.0.0             | version   |
+
+<br />
+Now that we done all the hard work we can upload our extension to the marketplace. Navigate to the [marketplace](https://marketplace.visualstudio.com/manage/publishers)
+
+1. Click the `Upload new extension` button in green at the top right of the screen
+2. You will see a "upload new item" modal appear where you can drag and drop or browse to your `.vsix` file. Upload the file that we just generated from the `tfx-cli`
+3. Click `Upload`
+
+You will now see your new extension appearing in the marketplace for your publisher. Until you become a verified publisher you will not be able to see your extension on the public marketplace. We talk about becoming a verified publisher below.
+
+At this point we can share our extension with anyone that wants it. When you hover over your extension you will see the `...` option appear. If you click that and select the share option you can specify the VSTS instance you would like to share your extension with.
+
+Once your extension is shared you can log into that VSTS instance and add the extension via extension page. You will need to be at the root level of VSTS to access extensions for the account. Once you get to the extensions screen you will see a screen like this:
+
+![works on my machine seal]({{ site.url }}/assets/posts/2017-12/extension-page.png)
+
+Select the shared extension and install it. Your extension is successfully installed
+
+## Testing the Build Task ##
+If you have gotten this far you have now created, published and deployed your custom Build Task and you want to see it in action. 
+
+1. Open up VSTS and head over to any project and navigate to the Build and Release section
+2. Create new build, select empty process
+3. Click add task and search for hello world
+4. You will see the custom build task, now add it to the build
+5. Modify the parameter by plugging in your name
+6. save and queue the new build
+
+When you complete the task your output should contain your build task:
+![console log]({{ site.url }}/assets/posts/2017-12/build-task-console.png)
+
+You have now successfully created your first VSTS Build Task and got it working in your VSTS instance.
+
+## Verified Publishers and the Public Marketplace ##
