@@ -105,6 +105,10 @@ The icon image file that will be used to identify your build task in the marketp
 ### task.json ###
 The Task metadata file which is located in your build task describes the individual task and what it executes. This includes parameters the user needs to enter and which scripts to execute.
 
+The `task.json` configures what the user is going to see when they select your build task in the UI. Here is an example of what a rendered Hello World build task will look like
+
+![Hello World Build Task UI]({{ site.url /assets/posts/2017-12/Build-Task-UI-Settings.png }})
+
 Here is a simple `task.json` file that executes a powershell script
 
 {% highlight json linenos %}
@@ -158,8 +162,19 @@ Here is a simple `task.json` file that executes a powershell script
 }
 {% endhighlight %}
 
-TODO - we need to add information about each section and a screenshot what this will look like as a build task.
+| Property       | Description                                         |
+|----------------|-----------------------------------------------------|
+| `id`           | A GUID to uniquely identify the build task          |
+| `name`         | The name of the build task                          |
+| `friendlyName` | The friendly name of the build task                 |
+| `description`  | The description of the build task                   |
+| `author`       | The author of the build task                        |
+| `version`      | The version to display in format (x.x.x)            |
+| `inputs`       | The inputs the user will be able to enter data      |
+| `execution`    | The scripts the build task will execute             |
 
 ### Buildtasks Powershell Script ###
+If you examine the end of the `task.json`
+
 
 
