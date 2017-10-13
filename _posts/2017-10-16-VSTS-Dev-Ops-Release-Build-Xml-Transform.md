@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  VSTS (Visual Studio Team Services) web.config connection string transforms
-modified: 2017-10-16 08:00:00
+modified: 2017-10-13 08:00:00
 categories: DevOps
 tags: [VSTS, Build, Release, Transform, Azure Deploy]
 share: true
@@ -21,8 +21,7 @@ Here is a list of different environments you may have:
 
 I have built complicated transforms that have been included in source control to generate the correct data. This is a great way to solve the problem but there is another way that may meet your needs. I can simple tweak a few settings on my Release Build inside of VSTS and have the transform applied with writing 0 lines of code.
 
-You will need to have a working Release Build and Environment configured before you continue. If you don't know how to do that you may find it useful to read my article on Release Builds
--- LINK TO RELEASE BUILD BEFORE POSTING -- 
+You will need to have a working Release Build and Environment configured before you continue. (Not documented here)
 
 ## 1. Find Our Element to Transform ##
 The first thing that needs to be done is figure out what needs to be transformed and what the new value if. In our example here we will be transforming the connection string in our `web.config` for a asp.net website.
