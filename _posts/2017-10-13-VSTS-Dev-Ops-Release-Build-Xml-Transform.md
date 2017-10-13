@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  VSTS (Visual Studio Team Services) web.config connection string transforms
+title:  web.config Connection String Transforms in VSTS (Visaul Studio Team Services)
 modified: 2017-10-13 08:00:00
 categories: DevOps
 tags: [VSTS, Build, Release, Transform, Azure Deploy]
