@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  DNN Continuous Integration and Continuous Deployment with VSTS and Azure - Clean Install
-modified: 2017-10-23 08:00:00
+modified: 2017-10-26 08:00:00
 categories: DevOps
 tags: [DNN, VSTS, Build, CI, CD, Azure, Release]
 share: true
@@ -12,9 +12,9 @@ comments: true
 After using several DNN Modules I have found that building, releasing and deploying modules can be a very manual process. This is true for modules that are released outside of your organization or modules that are released internally in your website. 
 
 ## Installing vs Side-Loading Modules ##
-when building a DNN Module when you build the module in release mode you generate a `.zip` installer file. This installer file can be bolted into your website and run necessary install scripts such as SQL scripts. After a project is installed a common approach is side-loading updates, where the administrator just copies over the latest assemblies and code files.
+When you build a DNN Module in release mode you generate a `.zip` installer file. This installer file can be bolted into your website and run necessary install scripts such as SQL scripts. After a project is installed a common approach is side-loading updates, where the administrator just copies over the latest assemblies and code files.
 
-While side-loading your module is an easy way to patch and update your module I find it a more apprioprate solution to use the installer to properly upgrade your module. Using the installer the module will properly update it's version number which will allow the Development and Quality Assurance teams to proplery verify the modules are working as designed.
+While side-loading your module is an easy way to patch and update your module I find a more apprioprate solution is to use the installer to properly upgrade your module. Using the installer the module will properly update it's version number which will allow the Development and Quality Assurance teams to properly verify the modules are working as designed.
 
 ## Pre-Reqs ##
 This tutorial will walk you through installing DNN Community Edition and set up VSTS builds that create versioned installer files and deploys the website to Azure.
@@ -59,7 +59,7 @@ It is important to note that the DNN Module is modified to be built independentl
 14. Push your changes up to your repository we are ready to start configuring the builds.
 
 ## Configure CI Build ##
-All of our repositories are now created and we are ready to start configuring our Continuous Integration (CI) Build. The CI build will be triggered with each commit and automatically update the version number in the `.dnn` manifest file. After configuring your CI Build you will be able to build your DNN Module indepently of everything else and product the module installer as a build artifact. This module installer can then be ran on any DNN Website and install your module easily.
+All of our repositories are now created and we are ready to start configuring our Continuous Integration (CI) Build. The CI build will be triggered with each commit and automatically update the version number in the `.dnn` manifest file. After configuring your CI Build you will be able to build your DNN Module idenpendently of everything else and produce the module installer as a build artifact. This module installer can then be ran on any DNN Website and install your module easily.
 
 Let's get started
 
