@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  How to Setup Swagger in Web API ASP.NET with Swashbuckle
-modified: 2017-11-01 08:00:00
+modified: 2017-11-07 08:00:00
 categories: dotnet
 tags: [dotnet, asp.net, swagger, documentation]
 share: true
@@ -30,7 +30,7 @@ NuGet Repos:
 
 Don't worry about downloading the github repo above, it is here just for your reference so you can take a look at the code or documentation if needed. One thing I really like about this library is how much control you have.
 
-To get started simple add your NuGet Dependency like you normally would. Since are working with asp.net Web API we are going to use the .NET Framework version. 
+To get started simple add your NuGet Dependency like you normally would. Since we are working with asp.net Web API we are going to use the .NET Framework version. 
 
 In the Package Manager console enter the following command
 {% highlight powershell linenos %}
@@ -117,7 +117,3 @@ At this point if you reload your swagger UI you will be able to specify your API
 We have gone over the basics of setting up swagger UI but did not go over how to access our new API that is apart of our page.
 
 * http://localhost/swagger/ui
-
-## Code Sample ##
-
-TODO Add GitHub repository
