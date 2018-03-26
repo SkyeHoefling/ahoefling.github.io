@@ -12,6 +12,7 @@ Recently I was working on a Xamarin.Forms app that required push notifications f
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">I need an Easy Button, I spent 5-10 minutes and I was able to get push notifications working with <a href="https://twitter.com/VSAppCenter?ref_src=twsrc%5Etfw">@VSAppCenter</a> and I am now a believer in the technology. I can also easily configure some pretty custom scenario where I can send a push notification to 1 device</p>&mdash; Andrew Hoefling (@andrew_hoefling) <a href="https://twitter.com/andrew_hoefling/status/975208857722114048?ref_src=twsrc%5Etfw">March 18, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<br/>
 This will be a 3-Part Blog series on Push Notifications with Visual Studio App Center
 
 | Title                                              | Description                                                           |
@@ -19,6 +20,8 @@ This will be a 3-Part Blog series on Push Notifications with Visual Studio App C
 | Push Notifications with App Center                 | The Basics and Configuration                                          |
 | Sending Push Notifications with the App Center API | How to trigger a Push Notification from code using the App Center API |
 | Local Notifications with App Center                | How to trigger local notifications from a push notification           | 
+
+<br/>
 
 ## The Push Notification Problem ##
 We are building a mobile app and we want to send push notifications, but each platform we are building uses a different push notificaiton server
@@ -28,6 +31,8 @@ We are building a mobile app and we want to send push notifications, but each pl
 | iOS     | Apple Push Notification Service |
 | Android | Firebase Cloud Messaging        |
 | Windows | Windows Notification Service    |
+
+<br />
 
 Suppose we had a simple service we can reference in our project that handles sending notifications out to our devices instead of having to write custom platform specific code potentially 3 times over. 
 
@@ -145,6 +150,7 @@ You have a few options from App Center when creating notifications
 | Custom Device List     | Sends a notification to a specific list you specify                                   | 
 | Audience               | Sends a notification to an App Center customized audience, you are allowed 5 for free |
 
+<br />
 ## Code Sample ##
 I have put together a simple Xamarin.Forms app that supports Push Notification. To get this working locally you will need to fork the repository and update the App Center configuration to use your configuration. At that point you should be able to use Push Notifications with App Center.
 
