@@ -51,7 +51,7 @@ Just like most App Center integrations they have provided awesome detailed steps
 
 Configuring iOS is really as simple as copying over the details from the APN certificate that you have created. They even provide documentation on this screen on how to do thata and approprate links.
 
-![App Center Push APN Config]{{ site.url }}/assets/posts/2018-03/AppCenter-Push-APN.png)
+![App Center Push APN Config]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-APN.png)
 
 Head over to visual studio and update your `Entitlements.plist`
 
