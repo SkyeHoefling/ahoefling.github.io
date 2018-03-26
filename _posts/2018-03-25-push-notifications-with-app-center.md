@@ -132,6 +132,8 @@ Now that we know our app is receiving the push notification we can test it while
 
 At this point you are ready to receive some notifications. Go back to App Center and trigger the notifications for both iOS and Android and you should see notifications like these:
 
+![App Center Push - iOS]({{ site.url }}/assets/2018-03/AppCenter-Push-iOS.jpg)
+![App Center Push - Android]({{ site.url }}/assets/2018-03/AppCenter-Push-Android.png)
 
 
 ## Device Specific Notification ##
