@@ -42,11 +42,11 @@ Just like most App Center integrations they have provided awesome detailed steps
 
 ### iOS Specific ###
 
-![App Center Push SDK iOS]({{ site.url }}/assets/2018-03/AppCenter-Push-Add-SDK-iOS.png)
+![App Center Push SDK iOS]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-Add-SDK-iOS.png)
 
 Configuring iOS is really as simple as copying over the details from the APN certificate that you have created. They even provide documentation on this screen on how to do thata and approprate links.
 
-![App Center Push APN Config]{{ site.url }}/assets/2018-03/AppCenter-Push-APN.png)
+![App Center Push APN Config]{{ site.url }}/assets/posts/2018-03/AppCenter-Push-APN.png)
 
 Head over to visual studio and update your `Entitlements.plist`
 
@@ -59,16 +59,16 @@ Now that iOS is taken care of you will want to configure your Android Push notif
 
 The SDK screen is almost identical between the 2 platforms but there is well documented differences, just be sure to read everything on the SDK configuration screen.
 
-![App Center Push SDK Android]({{ site.url }}/assets/2018-03/AppCenter-Push-Add-SDK-Android.png)
+![App Center Push SDK Android]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-Add-SDK-Android.png)
 
 Log into Firebase and get the following properties
 
 * Sender ID
 * Server Key
 
-![App Center Push SDK Android Firebase]({{ site.url }}/assets/2018-03/AppCenter-Push-Firebase.png)
+![App Center Push SDK Android Firebase]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-Firebase.png)
 
-![App Center Push SDK Android Server Keyy]({{ site.url }}/assets/2018-03/AppCenter-Push-Android-Server-Key.png)
+![App Center Push SDK Android Server Keyy]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-Android-Server-Key.png)
 
 Head over to visual studio and update your `AndroidManifest.xml`
 
@@ -132,8 +132,8 @@ Now that we know our app is receiving the push notification we can test it while
 
 At this point you are ready to receive some notifications. Go back to App Center and trigger the notifications for both iOS and Android and you should see notifications like these:
 
-![App Center Push - iOS]({{ site.url }}/assets/2018-03/AppCenter-Push-iOS.jpg)
-![App Center Push - Android]({{ site.url }}/assets/2018-03/AppCenter-Push-Android.png)
+![App Center Push - iOS]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-iOS.jpg)
+![App Center Push - Android]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-Android.png)
 
 
 ## Device Specific Notification ##
@@ -153,6 +153,6 @@ I have put together a simple Xamarin.Forms app that supports Push Notification. 
 ## App Center API ##
 Next time we will talk about using the App Center API and how to send customized push notifications from code. While you wait for the next article take a look at the api
 
-![App Center Push API]({{ site.url }}/assets/2018-03/AppCenter-Push-API-Swagger.png)
+![App Center Push API]({{ site.url }}/assets/posts/2018-03/AppCenter-Push-API-Swagger.png)
 
 * [AppCenter Swagger Api](https://openapi.appcenter.ms/) - look for the "push" section
