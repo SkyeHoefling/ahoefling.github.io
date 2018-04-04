@@ -11,15 +11,15 @@ description: >
   A blog about software development with a focus on Microsoft 
   Technologies by Andrew Hoefling. Andrew Hoefling is a Lead 
   Software Engineer for Surge Consulting Company 
-  (http://www.surgeforward.com/) and owns Hoefling Software
-  (http://www.hoeflingsoftware.com/). 
+  (https://www.surgeforward.com/) and owns Hoefling Software
+  (https://www.hoeflingsoftware.com/). 
 description-visible: > # this means to ignore newlines until "baseurl:"
   My adventures through software development in the world of .NET.
   Blog posts will focus on a new issue, achievment or technology
   that I am currently working with. You will find how-to guides and
   recommendations through the blog.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.andrewhoefling.com" # the base hostname & protocol for your site
+url: "https://www.andrewhoefling.com" # the base hostname & protocol for your site
 fullname: Andrew Hoefling
 twitter: andrew_hoefling
 officehours: ahoefling
