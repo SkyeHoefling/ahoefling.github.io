@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Easy Debugging for C# in DNN
-modified: 2018-04-30 08:00:00
+modified: 2018-06-04 08:00:00
 categories: DNN
 tags: [DNN, Debug, Local, symlink]
 share: true
@@ -40,7 +40,9 @@ If you want to create a SymLink for just one file the command is pretty straight
 * Where you will replace `<virtual file name>` with the name of the file you want to create.
 * Then you will replace `<actual file location>` with the file location of the actual file
 
-// TODO - insert screenshot
+![SymLink Basic File]({{ site.url }}/assets/posts/2018-04/SymLink-Basic.png)
+
+You'll notice in the screenshot that the file is showing up as a symlink
 
 ### Directory SymLink ###
 Creating single file SymLinks is really cool, but you may want to create a SymLink for an entire directory. The syntax changes slightly
@@ -50,7 +52,9 @@ Creating single file SymLinks is really cool, but you may want to create a SymLi
 * Where you will replace `<virtual folder name>` with the name of the folder you want to create
 * Then you will replace `<actual folder location>` with the actual folder location
 
-// insert screen shot
+![SymLink Directory]({{ site.url }}/assets/posts/2018-04/SymLink-Directory.png)
+
+You'll notice in the screenshot that the file is showing up as a symlink
 
 ## Why Use SymLinks in DNN ##
 Now that we understand the concept of SymLinks and how to create them, you may ask why use them in DNN? How do they save me time when I am developing a module, theme or a platform change?
