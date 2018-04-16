@@ -151,7 +151,9 @@ You have a few options from App Center when creating notifications
 | Audience               | Sends a notification to an App Center customized audience, you are allowed 5 for free |
 
 <br />
+
 ## Code Sample ##
+
 I have put together a simple Xamarin.Forms app that supports Push Notification. To get this working locally you will need to fork the repository and update the App Center configuration to use your configuration. At that point you should be able to use Push Notifications with App Center.
 
 * [Xamarin Push Sample](https://github.com/ahoefling/XamarinAppCenterPushSample)
