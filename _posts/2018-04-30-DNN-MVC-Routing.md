@@ -7,7 +7,7 @@ tags: [DNN, MVC, Module, Routing]
 share: true
 comments: true
 ---
-DNN 9.2 introduces many new features including new routing controls for MVC Modules. Now when building a MVC Module you can easily Redirect routes between Controllers and Actions at the Controller level. This new feature introduces flexibility that adds feature parity with Microsoft's MVC implementation. With this change a MVC Module can contain many controllers and actions per controller and handle the complex routing scenarios associated with MVC development. Prior to 9.2 developers were limited to having one controller. While there were workarounds to this limitation until now there wasn't an elegant way to handle routing in a MVC Module.
+DNN 9.2 introduces many new features including new routing controls for MVC Modules. Now, when building a MVC Module you can easily Redirect routes between Controllers and Actions at the Controller level. This new feature introduces flexibility that adds feature parity with Microsoft's MVC implementation. With this change a MVC Module can contain many controllers and actions per controller that handle the complex routing scenarios associated with MVC development. Prior to 9.2 developers were limited to having one controller. While there were workarounds to this limitation until now there wasn't an elegant way to handle routing in a MVC Module.
 
 ## What Changed? ##
 The `DnnController` is the heart of the DNN MVC Module pattern with several familiar methods and properties overidden for DNN specific purposes. Yet, this was incomplete because there was no `DnnUrlHelper` on the `DnnController`.
@@ -22,7 +22,7 @@ Adding the `DnnUrlHelper` to the `DnnController` allows us to easily route betwe
 
 * [Pull Request 1931](https://github.com/dnnsoftware/Dnn.Platform/pull/1931)
 
-The DNN MVC Action Pipeline was updated to handle redirects in the context of an `ActionFilter`. This gives developers powers to handling routing scenarios from an `ActionFilter`
+The DNN MVC Action Pipeline was updated to handle redirects in the context of an `ActionFilter`. This gives developers power to handling routing scenarios from an `ActionFilter`
 
 ## Action Routing ##
 Let's take a look at a simple routing problem. Suppose you have built a custom module that has a form where you expect user input. When the user submits the form you want to process that data and redirect to a confirmation screen to let the user know their form submission was successful. 
@@ -72,7 +72,7 @@ Breaking down this statement there are 2 big pieces
 `Url.Action` is using the `DnnUrlHelper` to generate the DNN appropriate URL to pass into the `Redirect` method
 
 ## Controller Routing ##
-Now that we understand a simple routing scenario let's expand our problem to solve a more complex scenario. Building on our original problem of a simple form that helps us collect user data. Suppose the form is collecting public data that anyone can view and after the user submits their form they can view a list of submissions by other users..
+Now that we understand a simple routing scenario let's expand our problem to solve a more complex scenario. Building on our original problem of a simple form that helps us collect user data. Suppose the form is collecting public data that anyone can view and after the user submits their form they can view a list of submissions by other users.
 
 We are now describing a much more complicated module let's describe each page in a little more detail
 
