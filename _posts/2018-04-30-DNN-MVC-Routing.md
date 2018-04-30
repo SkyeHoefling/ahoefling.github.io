@@ -196,6 +196,6 @@ Note that the `HomeController` now has 2 Actions
 * Error
 * RedirectToError
 
-The `ActionResult` that is generated from these methods is pipped into the `filterContext` and when the `ActionFilter` finishes processing the page will be updated.
+The `ActionResult` that is generated from these methods is piped into the `filterContext` and when the `ActionFilter` finishes processing the page will be updated.
 
 My personal preference is setting up these 2 Actions. This allows us to specify a Redirect which will update the url in the browser and completely move the user off the page that errored out. You technically don't have to use the 2 actions but I consider it a best practice for handling the routes.
